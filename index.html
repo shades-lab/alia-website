@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alia's Favorite Things</title>
+    <style>
+        body {
+            font-family: Georgia, serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background: #FFD4E5;
+            color: #fff;
+            padding: 30px 0; /* Increased padding for a wider banner */
+            text-align: center;
+            font-size: 24px; /* Increased font size for header text */
+            font-weight: bold; /* Made text bolder */
+        }
+
+        nav {
+            background: #444;
+            color: #fff;
+            padding: 10px 0;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            text-align: center;
+        }
+
+        nav ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        section {
+            padding: 20px;
+            margin: 20px;
+            background: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2, h3 {
+            color: lightcoral; /* Changed header color to hibiscus */
+        }
+
+        .brand {
+            margin-bottom: 20px;
+            text-align: center; /* Centered brand text */
+        }
+
+        .brand img {
+            width: 150px; /* Reduced image size */
+            height: auto;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px 0;
+            background: #FF88B7;
+            color: #fff;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+
+        /* Button Style */
+        #showEffect {
+            display: block;
+            background-color: #D8BFD8; /* Light Purple */
+            color: #fff;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            padding: 12px 20px;
+            margin: 20px auto;
+            text-align: center;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        #showEffect:hover {
+            background-color: #C6A2CD; /* Darker Purple */
+        }
+
+        /* Floating Hearts & Stars */
+        .heart, .star {
+            position: absolute;
+            font-size: 24px;
+            opacity: 1;
+            animation: floatUp 2s linear forwards;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px);
+                opacity: 0;
+            }
+        }
+
+        /* Crystals Section Styling */
+        #crystals {
+            padding: 20px;
+            margin: 20px;
+            background: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        #crystals h2 {
+            color: lightblue;
+        }
+
+        .crystal img {
+            width: 200px;
+            height: auto;
+            margin: 10px;
+        }
+
+        /* Hibiscus Section Styling */
+        #hibiscus {
+            padding: 20px;
+            margin: 20px;
+            background: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        #hibiscus h2 {
+            color: lightcoral;
+        }
+
+        #hibiscus img {
+            width: 150px; /* Adjusted image size for hibiscus */
+            height: auto;
+            margin: 10px;
+        }
+
+        /* Music Section Styling */
+        .song-item {
+            display: flex;
+            justify-content: space-between; /* Aligns title and player */
+            align-items: center; /* Vertically centers items */
+            margin: 10px 0; /* Adds space between songs */
+        }
+
+        .song-item audio {
+            margin-left: 20px; /* Adds space between title and audio player */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome to Alia's Favorite Things</h1>
+    </header>
+    
+    <nav>
+        <ul>
+            <li><a href="#brands">Brands</a></li>
+            <li><a href="#interests">Interests</a></li>
+            <li><a href="#music">Music</a></li>
+            <li><a href="#crystals">Crystals</a></li>
+            <li><a href="#hibiscus">Hibiscus</a></li> <!-- Added link for Hibiscus section -->
+        </ul>
+    </nav>
+
+    <section id="brands">
+        <h2 style="font-size: 20px;">Favorite Brands</h2> <!-- Increased font size for Favorite Brands -->
+        <div class="brand">
+            <h3>Chrome Hearts</h3>
+            <img src="/Users/azusaa/Desktop/chromeh/chromehearts.jpg" alt="Chrome Hearts Logo">
+        </div>
+        <div class="brand">
+            <h3>Maison Margiela</h3>
+            <img src="/Users/azusaa/Desktop/chromeh/Maison_margiela-corporate_logo_2015.jpg" alt="Maison Margiela Logo">
+        </div>
+        
+        <!-- Button to show hearts and stars -->
+        <button id="showEffect">Press Here</button>
+    </section>
+
+    <section id="interests">
+        <h2>Interests</h2>
+        <ul>
+            <li>Collects vintage magazines and books</li>
+            <li>Crystals</li>
+            <li>Psycology</li>
+            <li>Tarot Cards</li>
+            <li>Crime documentaries and film making</li>
+            <li>Poetry</li>
+        </ul>
+    </section>
+
+    <section id="music">
+        <h2>Lana Del Rey Songs</h2>
+        <ul>
+            <li class="song-item">
+                <span>Young and Beautiful</span>
+                <audio controls>
+                    <source src="/Users/azusaa/Desktop/chromeh/Lana Del Rey - Young and Beautiful [ ezmp3.cc ].mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+            </li>
+            <li class="song-item">
+                <span>Fishtail</span>
+                <audio controls>
+                    <source src="'/Users/azusaa/Desktop/chromeh/Lana Del Rey - Fishtail (Audio).mp3'" type="audio/mpeg"> <!-- Replace with actual path -->
+                    Your browser does not support the audio element.
+                </audio>
+            </li>
+            <li class="song-item">
+                <span>White Mustang</span>
+                <audio controls>
+                    <source src="'/Users/azusaa/Desktop/chromeh/Lana Del Rey - White Mustang (Official Music Video).mp3'" type="audio/mpeg"> <!-- Replace with actual path -->
+                    Your browser does not support the audio element.
+                </audio>
+            </li>
+            <li class="song-item">
+                <span>Carmen</span>
+                <audio controls>
+                    <source src="'/Users/azusaa/Desktop/chromeh/LANA DEL REY - CARMEN.mp3'" type="audio/mpeg"> <!-- Replace with actual path -->
+                    Your browser does not support the audio element.
+                </audio>
+            </li>
+        </ul>
+    </section>    <section id="music">
+        <h2>Lana Del Rey Songs</h2>
+        <ul>
+            <li class="song-item">
+                <span>Young and Beautiful</span>
+                <audio controls>
+                    <source src="/Users/azusaa/Desktop/chromeh/Lana Del Rey - Young and Beautiful [ ezmp3.cc ].mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+            </li>
+            <li class="song-item">
+                <span>Fishtail</span>
+                <audio controls>
+                    <source src="/Users/azusaa/Desktop/chromeh/Lana Del Rey - Fishtail (Audio).mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+            </li>
+            <li class="song-item">
+                <span>White Mustang</span>
+                <audio controls>
+                    <source src="/Users/azusaa/Desktop/chromeh/Lana Del Rey - White Mustang (Official Music Video).mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+            </li>
+            <li class="song-item">
+                <span>Carmen</span>
+                <audio controls>
+                    <source src="/Users/azusaa/Desktop/chromeh/LANA DEL REY - CARMEN.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+            </li>
+        </ul>
+    </section>
+    
+
+    <!-- Crystals Section -->
+    <section id="crystals">
+        <h2>Crystals</h2>
+        <div class="crystal">
+            <img src="/Users/azusaa/Desktop/chromeh/cry1.jpeg" alt="Crystal 1">
+        </div>
+        <div class="crystal">
+            <img src="/Users/azusaa/Desktop/chromeh/cry2.jpeg" alt="Crystal 2">
+        </div>
+        <div class="crystal">
+            <img src="/Users/azusaa/Desktop/chromeh/cry3.jpeg" alt="Crystal 3">
+        </div>
+    </section>
+
+    <!-- Hibiscus Section -->
+    <section id="hibiscus">
+        <h2>Hibiscus</h2>
+        <p>The hibiscus flower symbolizes beauty, love, and passion. It is often associated with femininity and is known for its vibrant colors and delicate petals. In many cultures, hibiscus is also linked to the idea of transformation and personal growth.</p>
+        <div>
+            <img src="/Users/azusaa/Desktop/chromeh/hib1.jpeg" alt="Hibiscus Flower 1"> <!-- Replace with actual image paths -->
+            <img src="/Users/azusaa/Desktop/chromeh/hib2.jpeg" alt="Hibiscus Flower 2">
+            <img src="/Users/azusaa/Desktop/chromeh/hib3.jpeg" alt="Hibiscus Flower 3">
+        </div>
+        <p>Hibiscus relates to Alia's personality as it embodies her vibrant spirit and love for beauty and transformation.</p>
+    </section>
+
+    <footer>
+        <p>Created with love for Alia</p>
+    </footer>
+
+    <!-- JavaScript for Floating Hearts & Stars -->
+    <script>
+        document.getElementById("showEffect").addEventListener("click", function() {
+            for (let i = 0; i < 10; i++) {
+                createFloatingElement("❤️"); // Hearts
+                createFloatingElement("⭐"); // Stars
+            }
+        });
+
+        function createFloatingElement(symbol) {
+            let element = document.createElement("div");
+            element.innerText = symbol;
+            element.classList.add(symbol === "❤️" ? "heart" : "star");
+            document.body.appendChild(element);
+
+            // Random positioning
+            let x = Math.random() * window.innerWidth;
+            let y = Math.random() * window.innerHeight;
+
+            element.style.left = `${x}px`;
+            element.style.top = `${y}px`;
+
+            // Remove element after animation
+            setTimeout(() => {
+                element.remove();
+            }, 2000);
+        }
+    </script>
+</body>
+</html>
