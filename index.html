@@ -171,6 +171,41 @@
         border-radius: 5px; /* Optional: Adds rounded corners */
         margin: 10px;
     }
+
+    .wheel-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        #wheelCanvas {
+            border-radius: 50%;
+            border: 1px solid black;
+        }
+
+        #spinButton {
+            margin-top: 15px;
+            background-color: #D8BFD8;
+            color: black;
+            font-size: 16px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        #spinButton:hover {
+            background-color: #C6A2CD;
+        }
+
+        .result-box {
+            margin-top: 15px;
+            font-size: 18px;
+            font-weight: bold;
+            color: black;
+            text-align: center;
+        }
     </style>
 </head>
 <body>
@@ -193,7 +228,7 @@
         <h2 style="font-size: 20px;">Favorite Brands</h2> <!-- Increased font size for Favorite Brands -->
         <div class="brand">
             <h3>Chrome Hearts</h3>
-            <img src="chromeh/chromehearts.jpg" alt="Chrome Hearts Logo">
+            <img src="/Users/azusaa/Desktop/chromeh/chromehearts.jpg" alt="Chrome Hearts Logo">
         </div>
         <div class="brand">
             <h3>Maison Margiela</h3>
@@ -298,6 +333,101 @@
     </div>
 </section>
 
+<section id="spin-for-compliment">
+    <h2>Spin for Compliment</h2>
+    <div class="wheel-container">
+        <canvas id="wheelCanvas" width="400" height="400"></canvas> <!-- Bigger wheel -->
+        <button id="spinButton">Spin the Wheel</button>
+        <div id="result" class="result-box"></div>
+    </div>
+</section>
+
+<script>
+    const compliments = [
+    "You make the world brighter", 
+    "Your kindness is unforgettable", 
+    "Your depth is rare", 
+    "Your words bring comfort", 
+    "Your depth is rare", 
+    "You make souls feel understood", 
+    "You are loved", 
+    "You bring meaning to the simple"
+];
+
+const wheelCanvas = document.getElementById("wheelCanvas");
+const ctx = wheelCanvas.getContext("2d");
+const spinButton = document.getElementById("spinButton");
+const resultBox = document.getElementById("result");
+const numSegments = compliments.length;
+const segmentAngle = (2 * Math.PI) / numSegments;
+let currentAngle = 0;
+let spinning = false;
+const centerX = wheelCanvas.width / 2;
+const centerY = wheelCanvas.height / 2;
+const radius = centerX; // Wheel radius
+
+function drawWheel() {
+    const pastelColors = ["#FFDDC1", "#FFABAB", "#FFC3A0", "#D5AAFF", "#85E3FF", "#B9FBC0", "#FFC6FF", "#B5EAD7"];
+    ctx.clearRect(0, 0, wheelCanvas.width, wheelCanvas.height);
+    
+    for (let i = 0; i < numSegments; i++) {
+        // Draw segment
+        ctx.beginPath();
+        ctx.moveTo(centerX, centerY);
+        ctx.arc(centerX, centerY, radius, segmentAngle * i, segmentAngle * (i + 1));
+        ctx.fillStyle = pastelColors[i % pastelColors.length];
+        ctx.fill();
+        ctx.stroke();
+
+        // Position text inside segment
+        ctx.save();
+        ctx.translate(centerX, centerY);
+        ctx.rotate(segmentAngle * i + segmentAngle / 2);
+        ctx.fillStyle = "black";
+        ctx.font = "14px Arial"; // Adjusted font size
+        ctx.textAlign = "center";
+        ctx.textBaseline = "middle";
+        ctx.fillText(compliments[i], radius * 0.6, 0); // Move text inward to fit
+        ctx.restore();
+    }
+}
+
+function spinWheel() {
+    if (spinning) return;
+    spinning = true;
+    let spinTime = Math.random() * 3000 + 2000;
+    let spinAngle = Math.random() * 360 + 720;
+    let finalAngle = currentAngle + spinAngle;
+    let startTime = Date.now();
+    
+    function animateSpin() {
+        let elapsed = Date.now() - startTime;
+        let progress = Math.min(elapsed / spinTime, 1);
+        currentAngle = finalAngle * progress;
+        ctx.clearRect(0, 0, wheelCanvas.width, wheelCanvas.height);
+        ctx.save();
+        ctx.translate(centerX, centerY);
+        ctx.rotate((currentAngle * Math.PI) / 180);
+        ctx.translate(-centerX, -centerY);
+        drawWheel();
+        ctx.restore();
+        
+        if (progress < 1) {
+            requestAnimationFrame(animateSpin);
+        } else {
+            spinning = false;
+            let selectedIndex = Math.floor((numSegments - (currentAngle % 360) / (360 / numSegments)) % numSegments);
+            resultBox.innerText = compliments[selectedIndex];
+        }
+    }
+    animateSpin();
+}
+
+spinButton.addEventListener("click", spinWheel);
+drawWheel();
+
+</script>
+
 
     <!-- JavaScript for Floating Hearts & Stars -->
     <script>
@@ -320,6 +450,7 @@
 
             element.style.left = `${x}px`;
             element.style.top = `${y}px`;
+  
 
             // Remove element after animation
             setTimeout(() => {
