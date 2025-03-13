@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alia's Favorite Things</title>
+    <title>Welcome to étoiles Safe Space</title>
     <style>
         body {
             font-family: Georgia, serif;
@@ -210,7 +210,7 @@
 </head>
 <body>
     <header>
-        <h1>Welcome to Alia's Favorite Things</h1>
+        <h1>Welcome to étoiles Safe Space</h1>
     </header>
     
     <nav>
@@ -249,6 +249,7 @@
             <li>Tarot Cards</li>
             <li>Crime documentaries and film making</li>
             <li>Poetry</li>
+            <li>Traditional Medicine</li>
         </ul>
     </section>
 
@@ -349,7 +350,7 @@
     "Your kindness is unforgettable", 
     "Your depth is rare", 
     "Your words bring comfort", 
-    "Your depth is rare", 
+    "Kindness suits you", 
     "You make souls feel understood", 
     "You are loved", 
     "You bring meaning to the simple"
@@ -427,6 +428,111 @@ function spinWheel() {
 spinButton.addEventListener("click", spinWheel);
 drawWheel();
 
+</script>
+
+<!-- Your existing HTML structure remains the same -->
+
+<section id="playlist-generator">
+    <h2>Playlist Generator</h2>
+    <label for="mood">Select your mood:</label>
+    <select id="mood">
+        <option value="happy">Happy</option>
+        <option value="sad">Sad</option>
+        <option value="relaxed">Relaxed</option>
+        <option value="energetic">Energetic</option>
+        <option value="romantic">Romantic</option>
+    </select>
+    <button onclick="generatePlaylist()">Generate Playlist</button>
+    <ul id="playlist"></ul>
+</section>
+
+<section id="bucket-list">
+    <h2>Bucket List Tracker</h2>
+    <input type="text" id="bucket-item" placeholder="Enter a goal">
+    <button onclick="addBucketItem()">Add</button>
+    <ul id="bucket-list-items"></ul>
+</section>
+
+<section id="mood-booster">
+    <h2>Mood Booster</h2>
+    <button onclick="boostMood()">Boost My Mood</button>
+    <p id="mood-message"></p>
+</section>
+
+<section id="gratitude-jar">
+    <h2>Virtual Gratitude Jar</h2>
+    <textarea id="gratitude-note" placeholder="Write something you're grateful for..."></textarea>
+    <button onclick="addGratitude()">Add to Jar</button>
+    <ul id="gratitude-list"></ul>
+</section>
+
+<script>
+    const playlists = {
+        happy: ["Pink Pony Club by Chappell Roan ", "Goodluck Babe by Chappell Roan", "Steeeam by Shelly","Girls by girl in red","Sofia by Clairo"],
+        sad: ["Carmen by Lana Del Rey", "In My Feelings by Lana Del Rey","Without You by Lana Del Rey","Heavy by The Marias","still love you by Phoebe Bridgers"],
+        relaxed: ["Casual by Chappell Roan", "LUNCH by Billie Eilish","Telephone by Vacations","Picture You by Chappell Roan"],
+        energetic: ["Prisoner by The Weeknd,Lana Del Rey", "Sofis by Clairo","Kingston by Faye Webster"],
+        romantic: ["You're not the one by Sky Ferreira", "Bags by Clairo"]
+    };
+    
+    function generatePlaylist() {
+        const mood = document.getElementById("mood").value;
+        const playlist = playlists[mood] || [];
+        const playlistElement = document.getElementById("playlist");
+        playlistElement.innerHTML = "";
+        playlist.forEach(song => {
+            let li = document.createElement("li");
+            li.textContent = song;
+            playlistElement.appendChild(li);
+        });
+    }
+    
+    function addBucketItem() {
+        const item = document.getElementById("bucket-item").value;
+        if (item) {
+            let li = document.createElement("li");
+            li.textContent = item;
+            document.getElementById("bucket-list-items").appendChild(li);
+            localStorage.setItem("bucketList", JSON.stringify([...getStoredItems("bucketList"), item]));
+            document.getElementById("bucket-item").value = "";
+        }
+    }
+    
+    function boostMood() {
+        const messages = ["You've made it through tough days before, you'll get through this one too", "Your presence make a difference", "Even small steps move forward, keep going", "You are more capable than you realize","Someone is out there smiling because of you","You deserve the same kindness you give","The sun still rises, and so will you"];
+        document.getElementById("mood-message").textContent = messages[Math.floor(Math.random() * messages.length)];
+    }
+    
+    function addGratitude() {
+        const note = document.getElementById("gratitude-note").value;
+        if (note) {
+            let li = document.createElement("li");
+            li.textContent = note;
+            document.getElementById("gratitude-list").appendChild(li);
+            localStorage.setItem("gratitudeNotes", JSON.stringify([...getStoredItems("gratitudeNotes"), note]));
+            document.getElementById("gratitude-note").value = "";
+        }
+    }
+    
+    function getStoredItems(key) {
+        return JSON.parse(localStorage.getItem(key)) || [];
+    }
+    
+    window.onload = function() {
+        const bucketList = getStoredItems("bucketList");
+        bucketList.forEach(item => {
+            let li = document.createElement("li");
+            li.textContent = item;
+            document.getElementById("bucket-list-items").appendChild(li);
+        });
+
+        const gratitudeNotes = getStoredItems("gratitudeNotes");
+        gratitudeNotes.forEach(note => {
+            let li = document.createElement("li");
+            li.textContent = note;
+            document.getElementById("gratitude-list").appendChild(li);
+        });
+    };
 </script>
 
 
