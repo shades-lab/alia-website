@@ -535,8 +535,92 @@ drawWheel();
     };
 </script>
 
+<section id="open-when">
+    <h2>Open When...</h2>
+    <p>Select a mood to receive a message:</p>
+    <div class="mood-container">
+        <button class="mood-button" onclick="showMessage('sad')">Sad</button>
+        <button class="mood-button" onclick="showMessage('overwhelmed')">Overwhelmed</button>
+        <button class="mood-button" onclick="showMessage('unmotivated')">Unmotivated</button>
+        <button class="mood-button" onclick="showMessage('happy')">Happy</button>
+        <button class="mood-button" onclick="showMessage('loved')">Loved</button>
+        <button class="mood-button" onclick="showMessage('cozy')">Need a laugh</button>
+        <button class="mood-button" onclick="showMessage('energetic')">Energetic</button>
+        <button class="mood-button" onclick="showMessage('relaxed')">Relaxed</button>
+        <button class="mood-button" onclick="showMessage('romantic')">Romantic</button>
+    </div>
+    <div id="mood-message-box" class="message-box"></div>
+</section>
 
-    <!-- JavaScript for Floating Hearts & Stars -->
+<style>
+    #open-when {
+        padding: 20px;
+        margin: 20px;
+        background: #fff;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        text-align: center;
+    }
+
+    #open-when h2 {
+        color: lightcoral;
+    }
+
+    .mood-container {
+        margin-top: 20px;
+    }
+
+    .mood-button {
+        background-color: #FFD4E5;
+        color: #fff;
+        font-size: 16px;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        margin: 10px;
+    }
+
+    .mood-button:hover {
+        background-color: #C6A2CD;
+    }
+
+    .message-box {
+        margin-top: 20px;
+        padding: 20px;
+        background-color: #FF88B7;
+        color: #fff;
+        border-radius: 5px;
+        display: none;
+        font-size: 18px;
+        text-align: center;
+    }
+</style>
+
+<script>
+    const moodMessages = {
+        sad: "Sadness is a passing cloud, no matter how long it lingers above your soul, the rain will clear and you will shine again",
+        overwhelmed: "it’s okay to close your eyes for a while to let the world spin without you. Rest is not defeat, it is a pause you deserve",
+        unmotivated: "Even the sun does not rise the same every day, yet it never stops ascending. Give yourself time; the light will find its way back to you",
+        happy: "In this moment the world is beautiful and you are part of that beauty. Live it fully.",
+        loved: "There are hearts that whisper your name in their prayers, eyes that see you as more beautiful than you see yourself, and souls that love you in quiet ways that do not need words",
+        cozy: "Like a warm cup in cold hands, like a quiet night wrapped in softness some moments are made to be held not rushed",
+        energetic: "There is a spark in your eyes today as if you were born from the fire of lightning itself",
+        relaxed: "You are like a distant star watching the world in silence, far from the noise, close to yourself",
+        romantic: "Love is a star in a distant sky or a flower growing unseen, yet it always exists even when we are not searching for it",
+    };
+
+    function showMessage(mood) {
+        const messageBox = document.getElementById("mood-message-box");
+        messageBox.innerText = moodMessages[mood];
+        messageBox.style.display = "block"; // Show the message box
+    }
+</script>
+
+
+
+
+<!-- JavaScript for Floating Hearts & Stars -->
     <script>
         document.getElementById("showEffect").addEventListener("click", function() {
             for (let i = 0; i < 10; i++) {
